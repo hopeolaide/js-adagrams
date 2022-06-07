@@ -22,6 +22,7 @@ export const drawLetters = () => {
 
 export const usesAvailableLetters = (input, lettersInHand) => {
   // Implement this method for wave 2
+
   // Start with a guard clause:
   if (input.length <= 0 || input.length > 10) {
     return false;
@@ -58,4 +59,27 @@ export const scoreWord = (word) => {
 
 export const highestScoreFrom = (words) => {
   // Implement this method for wave 1
+  let bestWordList = [];
+  let bestWord = "";
+  let wordScoreMap = {};
+  let values = Object.values(wordScoreMap);
+  let highestWordScore = Math.max(...values);
+
+  for (let word of words) {
+    let wordScore = scoreWord(word);
+    if (wordScore > highestWordScore) {
+      highestWordScore = wordScore;
+      bestWord = word;
+    } else if (wordScore == highestWordScore) {
+      if (bestWord.length === 10) {
+        continue;
+      } else if (word.length === 10) {
+        bestWord = word;
+      } else if (bestWord.length > word.length) {
+        bestWord = word;
+      }
+    }
+  }
+  const winningWord = { word: bestWord, score: highestWordScore };
+  return winningWord;
 };
