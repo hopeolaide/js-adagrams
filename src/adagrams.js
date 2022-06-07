@@ -26,8 +26,8 @@ export const usesAvailableLetters = (input, lettersInHand) => {
   // Start with a guard clause: 
   if (input.length <= 0 || input.length > 10) {
     return false;
-  }
-  
+  };
+
   for (let letter of input.toUpperCase()) {
     if (lettersInHand.includes(letter)) {
       lettersInHand.splice(lettersInHand.indexOf(letter), 1);
@@ -40,6 +40,22 @@ export const usesAvailableLetters = (input, lettersInHand) => {
 
 export const scoreWord = (word) => {
   // Implement this method for wave 3
+  word = word.toUpperCase();
+  let score = 0;
+  let wordLength = word.length;
+
+  if (word === "") {
+    return 0;
+  } else if (wordLength >= 7) {
+    score += 8;
+  }
+
+  for (let letter of word) {
+    score += scoreChart[letter];
+  }
+
+  return score;
+
 };
 
 export const highestScoreFrom = (words) => {
