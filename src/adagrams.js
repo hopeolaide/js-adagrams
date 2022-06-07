@@ -27,6 +27,7 @@ export const usesAvailableLetters = (input, lettersInHand) => {
   if (input.length <= 0 || input.length > 10) {
     return false;
   };
+
   for (let letter of input.toUpperCase()) {
     if (lettersInHand.includes(letter)) {
       lettersInHand.splice(lettersInHand.indexOf(letter), 1);
