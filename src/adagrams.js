@@ -24,9 +24,9 @@ export const drawLetters = () => {
 export const usesAvailableLetters = (input, lettersInHand) => {
   // Implement this method for wave 2
   // Start with a guard clause: 
-  // if (input.length <= 0 || input.length > 10) {
-  //   return false;
-  // };
+  if (input.length <= 0 || input.length > 10) {
+    return false;
+  };
   for (let letter of input.toUpperCase()) {
     if (lettersInHand.includes(letter)) {
       lettersInHand.splice(lettersInHand.indexOf(letter), 1);
